@@ -12,3 +12,22 @@
     color: #333;
     font-family: monospace;
 }
+
+.qualys-base-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #FFF;
+    border-radius: 5px;
+    background: #777;
+    font-weight: bold;
+}
+.qualys-button {
+    background: #333;
+    cursor: pointer;
+}
+.qualys-button:hover {
+    background: #222;
+}
+.qualys-button:active {
+    background: #555;
+}
