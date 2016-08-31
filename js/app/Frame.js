@@ -14,11 +14,18 @@
                 html: "Presidents of the USA",
                 height: 50
             }, {
+                xtype: "quickfilters",
                 region: "west",
-                title: "Quick Filters",
-                collapsible: true,
-                width: 300
+                width: 300,
+                listeners: {
+                    scope: this,
+                    filter: function(filter, party) {
+                        this.grid.filter(party.get("name"));
+                    }
+                }
             }, {
+                ref: "grid",
+                xtype: "presidentsgrid",
                 region: "center",
                 title: "Presidents Grid"
             }]
