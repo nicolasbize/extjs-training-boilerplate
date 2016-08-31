@@ -17,7 +17,11 @@
                     maxLength: 10,
                     allowBlank: false,
                     name: "username",
-                    emptyText: "Type your username"
+                    emptyText: "Type your username",
+                    listeners: {
+                        scope: this,
+                        keyup: this.validateForm
+                    }
                 }),
                 this.passwordField = new Ext.form.TextField({
                     fieldLabel: "Password",
@@ -25,12 +29,21 @@
                     enableKeyEvents: true,
                     name: "password",
                     allowBlank: false,
-                    inputType: "password"
+                    inputType: "password",
+                    listeners: {
+                        scope: this,
+                        keyup: this.validateForm
+                    }
                 }),
                 this.termsField = new Ext.form.Checkbox({
-                    boxLabel: "I agree to the terms"
+                    boxLabel: "I agree to the terms",
+                    listeners: {
+                        scope: this,
+                        check: this.validateForm
+                    }
                 }),
                 this.loginButton = new Qualys.button.LoginButton({
+                    disabled: true
                 })
             ]
         }, cfg));
@@ -38,7 +51,15 @@
     };
 
     Ext.extend($cls, Ext.Window, {
-
+        validateForm: function() {
+            if (this.usernameField.isValid(true) &&
+                this.passwordField.isValid(true) &&
+                this.termsField.getValue() === true) {
+                this.loginButton.enable();
+            } else {
+                this.loginButton.disable();
+            }
+        }
 
     });
 
