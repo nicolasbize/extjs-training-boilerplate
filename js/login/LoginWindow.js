@@ -43,10 +43,16 @@
                     }
                 }),
                 this.loginButton = new Qualys.button.LoginButton({
-                    disabled: true
+                    disabled: true,
+                    listeners: {
+                        scope: this,
+                        buttonclick: this.tryLogin
+                    }
                 })
             ]
         }, cfg));
+
+        this.addEvents("loggedin");
 
     };
 
@@ -59,6 +65,27 @@
             } else {
                 this.loginButton.disable();
             }
+        },
+
+        tryLogin: function() {
+            Ext.Ajax.request({
+                url: 'http://nicolasbize.com/ext/login.php',
+                scope: this,
+                success: function(contents) {
+                    var json = JSON.parse(contents.responseText);
+                    this.getEl().fadeOut();
+                    this.close();
+                    this.fireEvent("loggedin", this);
+                },
+                failure: function(contents) {
+                    // debugger;
+                },
+                params: {
+                    username: this.usernameField.getValue(),
+                    password: this.passwordField.getValue()
+                },
+                method: 'GET'
+            });
         }
 
     });
