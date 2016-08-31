@@ -31,3 +31,12 @@
 .qualys-button:active {
     background: #555;
 }
+
+.login-window .x-window-body {
+    background: #F4F4F4;
+    padding: 20px;
+    text-align: center;
+}
+.login-window .qualys-base-button {
+    margin-top: 20px;
+}
