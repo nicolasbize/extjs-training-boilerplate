@@ -40,3 +40,15 @@
 .login-window .qualys-base-button {
     margin-top: 20px;
 }
+
+.qualys-viewport {
+    background: #F4F4F4;
+}
+.qualys-header {
+    background: #3b547b;
+    color: #FFF;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: Helvetica;
+}

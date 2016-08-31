@@ -52,7 +52,7 @@
             ]
         }, cfg));
 
-        this.addEvents("loggedin");
+        this.addEvents("userlogin");
 
     };
 
@@ -75,7 +75,7 @@
                     var json = JSON.parse(contents.responseText);
                     this.getEl().fadeOut();
                     this.close();
-                    this.fireEvent("loggedin", this);
+                    this.fireEvent("userlogin", this);
                 },
                 failure: function(contents) {
                     // debugger;

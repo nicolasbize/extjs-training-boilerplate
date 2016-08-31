@@ -1,7 +1,16 @@
 Ext.onReady(function() {
 
-    new Qualys.window.LoginWindow({
+    new Qualys.app.Frame({
+        renderTo: Ext.getBody()
+    });
 
-    }).show();
+    // new Qualys.window.LoginWindow({
+    //     listeners: {
+    //         scope: this,
+    //         userlogin: function() {
+
+    //         }
+    //     }
+    // }).show();
 
 });
